@@ -12,7 +12,7 @@ let lessons = [
     "image": './image/pilot.jpg',
     "subject" : "Aviation (pilot)",
     "location" :"SaudiaArabia",
-    "price" : 'SAR170',
+    "price" : 'PKR170',
     "NumberOfSpace" : 5,
     },
     {
