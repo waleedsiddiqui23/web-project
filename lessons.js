@@ -4,7 +4,7 @@ let lessons = [
     "image": './image/car1.jpg',
     "subject" : "Automobile engineering",
     "location" :"Malaysia",
-    "price" : 'Ringit100',
+    "price" : 'QR100',
     "NumberOfSpace" : 5,
     },
     {
