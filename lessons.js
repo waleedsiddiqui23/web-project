@@ -76,7 +76,7 @@ let lessons = [
 "image": './image/arabic.jpg',
 "subject" : "Arabic language",
 "location" :"Dubai",
-"price" : '$160',
+"price" : '$161',
 "NumberOfSpace" : 5,
 },
 ]
