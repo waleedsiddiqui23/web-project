@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>School Lesson</title>
+<script src="./lessons.js"></script>
+<script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">
+ <header>
+ <h1 v-text="sitename"></h1>
+ <button v-on:click='showShoppingCart' v-if='cartItemCount > 0'>
+ {{cartItemCount}}
+ <span class="fas fa-shopping-cart"></span>Shopping Cart
+ </button>
+ <button disabled='disabled' v-else >Shopping Cart</button>
+ </header>
+ <main>
+ <div v-if='showProduct'>
+ <div v-for="lesson in lessons">
+ <img v-bind:src="lesson.image" height="350"
+width="350">
+ <p>subject: {{lesson.subject}}</p>
+ <p>location: {{lesson.location}}</p>
+ <p>price: {{lesson.price}}</p>
+ <p>Space Remaining: {{lesson.NumberOfSpace}}</p>
+ <p>
+ <button v-on:click='addToCart(lesson)'
+v-if='canAddToCart(lesson)'>Add to cart</button>
+ <button disabled='disabled' v-else >Add to
+cart</button>
+ </p>
+ </div></div>
+ <div v-else>
+ <div >
+ <div v-for="lesson in cart">
+    <img v-bind:src="lesson.image" height="350"
+    width="350">
+     <p>subject: {{lesson.subject}}</p>
+     <p>location: {{lesson.location}}</p>
+     <p>price: {{lesson.price}}</p>
+     <p>Space Remaining: {{lesson.NumberOfSpace}}</p>
+     <button v-on:click='remove(lesson)'>Remove</button>
+     </div>
+     </div>
+     <div>
+     <p>
+     <strong>Name</strong>
+     <input type="text"/>
+     </p>
+     <p>
+     <strong>Phone number</strong>
+     <input type="number"/>
+     </p>
+     <button v-on:click="submitForm">Checkout</button>
+     </div>
+     </div>
+     </main>
+    </div>
+    <script>
+     var app = new Vue({
+     el: '#app',
+     data: {
+     sitename: "School Lesson",
+     lessons : lessons,
+     cart: [],
+     showProduct : true
+     },
+     methods:{
+     addToCart: function (lesson)
+     {
+        this.cart.push(lesson);
+ if(lesson.NumberOfSpace){
+ lesson.NumberOfSpace -= 1;
+ }
+ },
+ remove(lesson){
+ let index = this.cart.indexOf(lesson);
+ if(index > -1){
+ this.cart.splice(index, 1);
+ }
+ lesson.NumberOfSpace+= 1;
+ },
+ canAddToCart(lesson){
+ return lesson.NumberOfSpace > 0;
+ },
+ showShoppingCart()
+ {
+ this.showProduct = this.showProduct ? false : true;
+ },
+ submitForm(){
+ alert('order has been submitted')
+ },
+ },
+ computed:{
+ cartItemCount: function()
+ {
+ return this.cart.length || '';
+ },
+ }
+ })
+</script>
+</body>
+</html>
