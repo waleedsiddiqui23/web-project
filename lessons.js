@@ -60,7 +60,7 @@ let lessons = [
 "image": './image/physics.jpg',
 "subject" : "Physics",
 "location" :"Oxford",
-"price" : '$180',
+"price" : 'british spounds 180',
 "NumberOfSpace" : 5,
 },
 {
